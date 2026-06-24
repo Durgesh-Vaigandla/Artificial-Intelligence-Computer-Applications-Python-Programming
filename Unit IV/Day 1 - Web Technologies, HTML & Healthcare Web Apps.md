@@ -1,46 +1,40 @@
-# Unit IV – Day 1 (2 Hours)
+****# Unit IV – Day 1 (2 Hours)
 ## Web Technologies & HTML — Complete Guide for Pharmacy Students
 
 ---
 
 ## 🎯 Session Goals
-By the end of this session, students will be able to:
+By the end of this session, you will be able to:
 - Explain how the web works and where HTML fits in
-- Understand HTML document structure — DOCTYPE, head, body
-- Use all heading, paragraph, text formatting, and list tags
-- Build tables for drug and patient data
-- Add images and hyperlinks to a webpage
-- Create forms to collect patient information
-- Use semantic HTML tags for better page organization
-- Build a complete pharmacy-themed webpage combining all elements
+- Understand the complete HTML document structure
+- Know every major HTML element by name and purpose — text, lists, tables, media, links, forms, and semantic tags
+- Understand global attributes and custom `data-*` attributes
+- Apply all of this practically by building real pharmacy-themed web pages
 
 ---
 
 ## ⏱️ Session Plan (2 Hours)
 
-| Time | Topic |
-|------|-------|
-| 0:00 – 0:05 | Session overview |
-| 0:05 – 0:15 | How the web works |
-| 0:15 – 0:30 | HTML structure + head tags |
-| 0:30 – 0:50 | Text — headings, paragraphs, formatting tags |
-| 0:50 – 1:05 | Lists — ordered, unordered, nested |
-| 1:05 – 1:25 | Tables — full coverage |
-| 1:25 – 1:35 | Images and hyperlinks |
-| 1:35 – 1:50 | Forms — all input types |
-| 1:50 – 1:58 | Semantic tags + full page project |
-| 1:58 – 2:00 | Recap + Q&A |
+| Time | Block | Topic |
+|------|-------|-------|
+| 0:00 – 0:05 | — | Session overview |
+| 0:05 – 1:05 | **THEORY** | How the web works → full HTML element reference → attributes |
+| 1:05 – 1:55 | **PRACTICAL** | Hands-on building — profile page, drug monograph, form, semantic layout |
+| 1:55 – 2:00 | — | Recap + Q&A |
+
+> 💬 **How to use this document:** Part A is the full theory — read and understand every tag before touching the keyboard. Part B is where you actually build pages using everything from Part A. Don't skip ahead to Part B without finishing Part A — in HTML, half-known tags lead to broken pages.
 
 ---
+---
+---
+
+# 🅰️ PART A — THEORY
 
 ---
 
 # SECTION 1 — How the Web Works
-## (0:05 – 0:15 | 10 minutes)
 
----
-
-## 1.1 The Simple Analogy
+## 1.1 The Pharmacy Analogy
 
 Think of building a webpage like preparing a drug:
 
@@ -52,7 +46,7 @@ Think of building a webpage like preparing a drug:
 | **Manufacturing process** (backend production) | **Python / Java / PHP** (server-side logic) |
 | **Storage system** (where raw material is kept) | **Database** (where data is stored) |
 
-> 💬 "Just like a tablet needs an active ingredient, excipients, and a manufacturing process — a website needs HTML, CSS, and a backend. Today we focus on the active ingredient — HTML."
+> 💬 "Just like a tablet needs an active ingredient, excipients, and a manufacturing process — a website needs HTML, CSS, and a backend. Today we focus on the active ingredient — HTML. CSS gets its own full session next."
 
 ---
 
@@ -107,18 +101,14 @@ You see: Apollo Hospitals homepage
 └─────────────────────────────────────────────────────┘
 ```
 
-Today's session = **HTML only** — the skeleton of every webpage.
+Today's theory = **HTML only** — the skeleton of every webpage.
 
 ---
-
 ---
 
-# SECTION 2 — HTML Document Structure
-## (0:15 – 0:30 | 15 minutes)
+# SECTION 2 — What is HTML and How It's Built
 
----
-
-## 2.1 What is HTML?
+## 2.1 Definition
 
 > **HTML** stands for **HyperText Markup Language**.
 > - **HyperText** = text that contains links to other pages
@@ -127,7 +117,7 @@ Today's session = **HTML only** — the skeleton of every webpage.
 
 HTML tells the browser: "This piece of text is a heading. This is a paragraph. This is a table. This is a link." The browser then displays each element accordingly.
 
-HTML is **NOT** a programming language — it does not have logic, conditions, or loops. It is a **markup language** — it simply describes and labels content.
+HTML is **NOT** a programming language — it has no logic, conditions, or loops. It is a **markup language** — it simply describes and labels content.
 
 ---
 
@@ -150,31 +140,32 @@ Opening tag                   Closing tag
 ```html
 <p>Paracetamol is an analgesic and antipyretic drug.</p>
 ```
-- `<p>` = opening paragraph tag
-- The sentence = content
-- `</p>` = closing paragraph tag
-- The whole thing = a paragraph element
 
-### Self-Closing Tags
-Some tags do not have content and do not need a closing tag:
+### Void Elements (Self-Closing Tags)
+
+Some elements have no content, so they don't need a closing tag at all. These are called **void elements**:
+
 ```html
-<br>       <!-- Line break -->
-<hr>       <!-- Horizontal line -->
-<img src="drug.jpg">   <!-- Image -->
-<input type="text">    <!-- Input field -->
+<br>      <!-- Line break -->
+<hr>      <!-- Horizontal line -->
+<img>     <!-- Image -->
+<input>   <!-- Input field -->
+<meta>    <!-- Metadata -->
+<link>    <!-- External resource link -->
 ```
+
+> 💬 You may sometimes see these written as `<br />` with a trailing slash — that's the older XHTML style. In modern HTML5, plain `<br>` is correct and preferred.
 
 ---
 
-## 2.3 HTML Attributes
+## 2.3 Attributes — Giving Tags Extra Information
 
-Attributes give extra information to a tag. They always go inside the opening tag.
+Attributes go inside the opening tag and provide extra detail about an element. This applies to **every tag in HTML**, not just the ones shown below — so understand this concept thoroughly now.
 
 ```
 <tagname  attribute="value">  content  </tagname>
 ```
 
-Examples:
 ```html
 <a href="https://www.who.int">WHO Website</a>
         ↑
@@ -185,9 +176,55 @@ Examples:
   source              alt text              width
 ```
 
+### 2.3.1 Global Attributes (Work on Almost Any Tag)
+
+| Attribute | Purpose | Example |
+|-----------|---------|---------|
+| `id` | A unique identifier for one specific element on the page | `<div id="patient-card-1">` |
+| `class` | A reusable label — many elements can share the same class | `<p class="warning">` |
+| `style` | Inline CSS styling directly on the element | `<p style="color:red;">` |
+| `title` | Tooltip text shown on hover | `<span title="Generic name">` |
+| `lang` | Language of the content | `<p lang="te">` (Telugu) |
+| `hidden` | Hides the element from view entirely | `<p hidden>Internal note</p>` |
+| `tabindex` | Controls keyboard "Tab" navigation order | `<input tabindex="1">` |
+| `contenteditable` | Lets the user edit the content directly in the browser | `<div contenteditable="true">` |
+
+> 💬 **`id` vs `class` — the most common beginner confusion:** `id` must be **unique** — only one element on the entire page can have `id="patient-card-1"`. `class` can be reused on **many** elements — every warning message on the page can share `class="warning"`. Think of `id` like a `PatientID` (unique to one person) and `class` like a `Category` (many patients can share "Diabetic").
+
+### 2.3.2 Custom Data Attributes — `data-*`
+
+HTML allows you to invent your **own** attributes for storing custom information on an element, as long as the attribute name starts with `data-`. These are invisible to the user but readable by CSS and JavaScript — extremely useful in healthcare dashboards for attaching hidden clinical data to visible elements.
+
+```html
+<div class="drug-card" 
+     data-drug-id="D001" 
+     data-requires-prescription="true" 
+     data-max-dose="4000">
+    Paracetamol 500mg
+</div>
+```
+
+- `data-drug-id="D001"` — stores the drug's database ID directly on the HTML element
+- `data-requires-prescription="true"` — a hidden flag a script could check before allowing "Add to Cart"
+- `data-max-dose="4000"` — hidden safety data a script could use to validate a quantity field
+
+> 💬 **Why this matters in pharmacy systems:** Imagine a drug-search results page. Each drug `<div>` on the page can carry hidden `data-*` attributes — drug ID, stock count, prescription requirement — so that when a pharmacist clicks "Dispense," a script instantly knows everything about that drug without needing to ask the server again. You will see this exact pattern in real pharmacy software interfaces.
+
+```html
+<!-- A patient row in a results table, carrying hidden data -->
+<tr data-patient-id="P004" data-risk-level="high">
+    <td>Anitha Reddy</td>
+    <td>28</td>
+    <td>Diabetic</td>
+</tr>
+```
+
+---
 ---
 
-## 2.4 The Full HTML Document Structure
+# SECTION 3 — The HTML Document Structure
+
+## 3.1 The Full Skeleton
 
 Every HTML file must follow this structure:
 
@@ -214,7 +251,7 @@ Every HTML file must follow this structure:
 </html>
 ```
 
-### Breakdown — Line by Line
+### Line-by-Line Breakdown
 
 **`<!DOCTYPE html>`**
 - Must be the very first line in every HTML file
@@ -224,7 +261,7 @@ Every HTML file must follow this structure:
 
 **`<html lang="en">`**
 - The root element — everything else lives inside this
-- `lang="en"` tells the browser the page is in English (important for screen readers for visually impaired users)
+- `lang="en"` tells the browser the page is in English (important for screen readers used by visually impaired patients)
 
 **`<head>` section**
 - Contains information ABOUT the page — not visible on screen
@@ -244,23 +281,29 @@ Every HTML file must follow this structure:
 
 **`<body>` section**
 - Everything visible on the page goes here
-- All the content your user actually sees and interacts with
 
 **HTML Comments: `<!-- comment text -->`**
-- Not visible on the webpage
-- Used by the developer as notes
-- Like writing notes in pencil on a prescription draft
+- Not visible on the webpage; notes for the developer only
 
 ---
 
+## 3.2 Other `<head>` Elements You Should Know
+
+| Tag | Purpose |
+|-----|---------|
+| `<link>` | Connects an external CSS file: `<link rel="stylesheet" href="style.css">` |
+| `<script>` | Connects/embeds JavaScript |
+| `<style>` | Embeds CSS directly inside the HTML file |
+| `<base>` | Sets a default base URL for all relative links on the page |
+
+We will use `<link>` heavily in the next session when we cover CSS.
+
+---
 ---
 
-# SECTION 3 — Headings and Paragraphs
-## (0:30 – 0:50 | 20 minutes)
+# SECTION 4 — Text Content Elements
 
----
-
-## 3.1 Heading Tags — `<h1>` to `<h6>`
+## 4.1 Heading Tags — `<h1>` to `<h6>`
 
 HTML has six levels of headings — from the largest (`<h1>`) to the smallest (`<h6>`).
 
@@ -279,34 +322,27 @@ HTML has six levels of headings — from the largest (`<h1>`) to the smallest (`
 |-----|---------|---------|
 | `<h1>` | Page title — use ONLY ONCE per page | "Apollo Hospital Patient Portal" |
 | `<h2>` | Major sections of the page | "Appointments", "Lab Results", "Prescriptions" |
-| `<h3>` | Subsections within a section | "Book New Appointment", "View Past Appointments" |
+| `<h3>` | Subsections within a section | "Book New Appointment" |
 | `<h4>` | Subsections within subsections | "Morning Slots", "Evening Slots" |
 | `<h5>`, `<h6>` | Rarely used — very small subheadings | Fine print, footnotes |
 
-> 💬 "Think of headings like a drug monograph structure. The drug name is `<h1>`. Major sections like Indications, Dosage, Side Effects are `<h2>`. Subsections within them are `<h3>`. You never skip levels — just like a monograph has a logical hierarchy."
+> 💬 "Think of headings like a drug monograph structure. The drug name is `<h1>`. Major sections like Indications, Dosage, Side Effects are `<h2>`. Subsections within them are `<h3>`. You never skip levels."
 
 ---
 
-## 3.2 Paragraph Tag — `<p>`
+## 4.2 Paragraph Tag — `<p>`
 
 ```html
 <p>Paracetamol is a commonly used analgesic and antipyretic medication.
 It is available over-the-counter and is considered safe when taken
 at recommended doses.</p>
-
-<p>Overdose of Paracetamol can cause severe liver damage. The maximum
-adult dose is 4000 mg per day. Patients with liver disease should
-consult a physician before use.</p>
 ```
 
-- Each `<p>` tag creates a new paragraph with automatic spacing above and below
-- Even if you press Enter many times inside the tag, the browser ignores extra whitespace
+Each `<p>` tag creates a new paragraph with automatic spacing above and below. Extra Enter presses inside the tag are ignored by the browser.
 
 ---
 
-## 3.3 Text Formatting Tags
-
-These tags change how text looks — bold, italic, underline, etc.
+## 4.3 Text Formatting Tags
 
 ```html
 <!-- Bold — for important warnings, drug names -->
@@ -317,26 +353,57 @@ These tags change how text looks — bold, italic, underline, etc.
 <i>Paracetamol</i> is the INN (International Non-proprietary Name).
 <em>Always check for drug interactions before dispensing.</em>
 
-<!-- Underline — use sparingly; looks like a link -->
+<!-- Underline -->
 <u>Refer to Section 4 for paediatric dosing.</u>
 
 <!-- Strikethrough — for discontinued drugs, removed information -->
 <s>Old dose: 1000mg every 4 hours</s> (Updated: 500mg every 6 hours)
 <del>Rofecoxib (Vioxx)</del> — Withdrawn from market due to cardiac risk
 
-<!-- Superscript and Subscript — for chemical formulas and references -->
+<!-- ins — marks newly inserted/updated text (often paired with del) -->
+<p>Dose updated: <del>500mg</del> <ins>650mg</ins> twice daily</p>
+
+<!-- Superscript and Subscript — chemical formulas and references -->
 Chemical formula: C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>
 Reference<sup>[1]</sup>
 
 <!-- Highlighted text -->
 <mark>High Alert Medication — Double Check Dose</mark>
 
-<!-- Small text — for fine print, disclaimers -->
-<small>This information is for educational purposes only. 
-Always consult a licensed pharmacist.</small>
+<!-- Small text — disclaimers, fine print -->
+<small>This information is for educational purposes only.</small>
+
+<!-- Abbreviation — shows full meaning on hover -->
+<abbr title="Nil By Mouth">NBM</abbr> status confirmed before surgery.
+<abbr title="Twice a Day">BD</abbr> dosing schedule.
+
+<!-- Citation — naming a source, book, or reference work -->
+Refer to <cite>Indian Pharmacopoeia, 2022</cite> for the full monograph.
+
+<!-- Code — for displaying code, drug codes, or system identifiers -->
+Batch code format: <code>PCM-2025-B047</code>
+
+<!-- Keyboard input — represents a key the user should press -->
+Press <kbd>Ctrl</kbd> + <kbd>F</kbd> to search the drug database.
+
+<!-- Blockquote — a longer quoted passage, e.g. from a clinical guideline -->
+<blockquote>
+    "Paracetamol remains the first-line analgesic of choice in patients
+    with normal hepatic function, given its favourable safety profile."
+</blockquote>
+
+<!-- Address — contact information for a person/organisation -->
+<address>
+    City Hospital Pharmacy<br>
+    MG Road, Tirupati, Andhra Pradesh<br>
+    Phone: 0877-XXXXXXX
+</address>
+
+<!-- Time — machine-readable dates/times -->
+Prescription issued on <time datetime="2025-06-15">15th June 2025</time>.
 ```
 
-### Visual Result:
+### Quick Reference Table
 
 | Tag | Renders As | Use in Pharmacy |
 |-----|-----------|----------------|
@@ -345,25 +412,30 @@ Always consult a licensed pharmacist.</small>
 | `<i>` | *Italic* | Drug generic names (INN), Latin terms |
 | `<em>` | *Italic + emphasis* | Critical instructions |
 | `<u>` | Underlined | References (use sparingly) |
-| `<s>` or `<del>` | ~~Strikethrough~~ | Withdrawn drugs, outdated info |
+| `<s>` / `<del>` | ~~Strikethrough~~ | Withdrawn drugs, outdated info |
+| `<ins>` | <u>Underlined (inserted)</u> | Updated dosage values |
 | `<mark>` | Highlighted | High-alert medications |
-| `<sup>` | Superscript (x²) | References, chemical notation |
-| `<sub>` | Subscript (H₂O) | Chemical formulas |
+| `<sup>` / `<sub>` | x² / H₂O | References, chemical notation |
 | `<small>` | Smaller text | Disclaimers, fine print |
+| `<abbr>` | Dotted underline + tooltip | Medical abbreviations (NBM, BD, STAT) |
+| `<cite>` | *Italic* | Naming a guideline, pharmacopoeia, journal |
+| `<code>` | Monospace font | Batch codes, drug IDs, system codes |
+| `<kbd>` | Boxed monospace | Keyboard shortcuts in a software guide |
+| `<blockquote>` | Indented block | Quoted clinical guidelines |
+| `<address>` | Italic block | Pharmacy/hospital contact details |
+| `<time>` | Normal text + hidden machine-readable date | Prescription dates, expiry dates |
 
 ---
 
-## 3.4 Line Break and Horizontal Rule
+## 4.4 Line Break and Horizontal Rule
 
 ```html
-<!-- Line break — moves to next line WITHOUT starting new paragraph -->
 <p>
     Tablet: 500mg, 650mg<br>
     Syrup: 125mg/5mL, 250mg/5mL<br>
     Suppository: 80mg, 125mg, 325mg
 </p>
 
-<!-- Horizontal rule — draws a dividing line across the page -->
 <h2>Indications</h2>
 <p>Fever, mild to moderate pain.</p>
 <hr>
@@ -371,13 +443,11 @@ Always consult a licensed pharmacist.</small>
 <p>Severe hepatic impairment.</p>
 ```
 
-> 💬 "`<br>` is like pressing Enter once in the middle of a paragraph. `<hr>` is like drawing a line between two sections in a prescription — separating diagnosis from treatment."
+> 💬 "`<br>` is like pressing Enter once in the middle of a paragraph. `<hr>` is like drawing a line between two sections in a prescription."
 
 ---
 
-## 3.5 Preformatted Text — `<pre>`
-
-Displays text exactly as written — preserving spaces and line breaks. Useful for displaying chemical structures, code, or formatted data.
+## 4.5 Preformatted Text — `<pre>`
 
 ```html
 <pre>
@@ -388,16 +458,14 @@ Displays text exactly as written — preserving spaces and line breaks. Useful f
 </pre>
 ```
 
----
+Displays text exactly as written — preserving spaces and line breaks. Useful for chemical structures, code, or aligned data.
 
 ---
-
-# SECTION 4 — Lists
-## (0:50 – 1:05 | 15 minutes)
-
 ---
 
-## 4.1 Unordered List — `<ul>` and `<li>`
+# SECTION 5 — Lists
+
+## 5.1 Unordered List — `<ul>` and `<li>`
 
 Used when the order does NOT matter — bullet points.
 
@@ -407,43 +475,14 @@ Used when the order does NOT matter — bullet points.
     <li>Mild to moderate pain (headache, toothache, backache)</li>
     <li>Fever (antipyretic)</li>
     <li>Post-operative pain management</li>
-    <li>Arthritis pain relief</li>
-    <li>Cold and flu symptoms</li>
-</ul>
-```
-
-```html
-<h3>Adverse Drug Reactions — Amoxicillin</h3>
-<ul>
-    <li>Diarrhoea</li>
-    <li>Nausea and vomiting</li>
-    <li>Skin rash</li>
-    <li>Allergic reactions (rare — up to anaphylaxis)</li>
-    <li>Oral candidiasis (thrush) with prolonged use</li>
 </ul>
 ```
 
 ---
 
-## 4.2 Ordered List — `<ol>` and `<li>`
+## 5.2 Ordered List — `<ol>` and `<li>`
 
 Used when the order MATTERS — numbered steps.
-
-```html
-<h3>How to Administer an IM Injection — Step-by-Step</h3>
-<ol>
-    <li>Wash hands thoroughly with soap and water for 20 seconds</li>
-    <li>Gather equipment: syringe, needle, drug vial, swab</li>
-    <li>Draw the drug into the syringe — check dose again</li>
-    <li>Clean the injection site with an alcohol swab</li>
-    <li>Insert needle at 90° angle into the muscle</li>
-    <li>Aspirate to confirm needle is not in a blood vessel</li>
-    <li>Inject the drug slowly and steadily</li>
-    <li>Withdraw needle and apply gentle pressure with swab</li>
-    <li>Dispose of needle in sharps container immediately</li>
-    <li>Document the administration in patient record</li>
-</ol>
-```
 
 ```html
 <h3>Prescription Dispensing Procedure</h3>
@@ -452,79 +491,48 @@ Used when the order MATTERS — numbered steps.
     <li>Verify patient identity and prescription authenticity</li>
     <li>Enter prescription into Pharmacy Information System (PIS)</li>
     <li>Check drug-drug interactions and allergy history</li>
-    <li>Pick the correct drug, strength, and quantity from stock</li>
-    <li>Generate and affix prescription label</li>
-    <li>Perform final check — right patient, right drug, right dose</li>
-    <li>Counsel patient on dose, timing, storage, and side effects</li>
-    <li>Record dispensing in system</li>
+    <li>Dispense, label, and counsel the patient</li>
 </ol>
 ```
 
----
-
-## 4.3 Ordered List — Custom Numbering
+### Custom Numbering
 
 ```html
 <!-- Roman numerals -->
 <ol type="I">
     <li>Phase I Clinical Trial</li>
     <li>Phase II Clinical Trial</li>
-    <li>Phase III Clinical Trial</li>
-    <li>Phase IV Post-Marketing Surveillance</li>
-</ol>
-
-<!-- Alphabetical -->
-<ol type="A">
-    <li>Analgesics</li>
-    <li>Antibiotics</li>
-    <li>Antidiabetics</li>
-    <li>Antihypertensives</li>
 </ol>
 
 <!-- Start from a specific number -->
 <ol start="5">
     <li>Step 5: Label the drug</li>
     <li>Step 6: Counsel patient</li>
-    <li>Step 7: Record dispensing</li>
 </ol>
 ```
 
 ---
 
-## 4.4 Nested Lists
-
-Lists inside lists — for hierarchical information like drug classifications.
+## 5.3 Nested Lists
 
 ```html
 <h3>Drug Classification — Analgesics</h3>
 <ul>
     <li>Non-Opioid Analgesics
         <ul>
-            <li>Paracetamol (Acetaminophen)</li>
+            <li>Paracetamol</li>
             <li>NSAIDs
                 <ul>
                     <li>Ibuprofen</li>
                     <li>Diclofenac</li>
-                    <li>Naproxen</li>
                 </ul>
             </li>
         </ul>
     </li>
     <li>Opioid Analgesics
         <ul>
-            <li>Weak Opioids
-                <ul>
-                    <li>Codeine</li>
-                    <li>Tramadol</li>
-                </ul>
-            </li>
-            <li>Strong Opioids
-                <ul>
-                    <li>Morphine</li>
-                    <li>Fentanyl</li>
-                    <li>Oxycodone</li>
-                </ul>
-            </li>
+            <li>Tramadol</li>
+            <li>Morphine</li>
         </ul>
     </li>
 </ul>
@@ -532,7 +540,7 @@ Lists inside lists — for hierarchical information like drug classifications.
 
 ---
 
-## 4.5 Description List — `<dl>`, `<dt>`, `<dd>`
+## 5.4 Description List — `<dl>`, `<dt>`, `<dd>`
 
 Used for term-definition pairs — perfect for drug monographs and glossaries.
 
@@ -540,52 +548,31 @@ Used for term-definition pairs — perfect for drug monographs and glossaries.
 <h3>Pharmacokinetics of Paracetamol</h3>
 <dl>
     <dt>Absorption</dt>
-    <dd>Rapidly and almost completely absorbed from the GI tract.
-        Peak plasma concentration reached in 30–60 minutes.</dd>
-
-    <dt>Distribution</dt>
-    <dd>Widely distributed throughout body tissues.
-        Volume of distribution: 0.9 L/kg. Protein binding: 10–25%.</dd>
+    <dd>Rapidly and almost completely absorbed from the GI tract.</dd>
 
     <dt>Metabolism</dt>
-    <dd>Primarily hepatic (90%). Metabolized by glucuronidation and 
-        sulphation. A small fraction via CYP2E1 to toxic NAPQI metabolite.</dd>
+    <dd>Primarily hepatic, via glucuronidation and sulphation.</dd>
 
     <dt>Excretion</dt>
-    <dd>Renal. 90% excreted in urine as glucuronide and sulphate conjugates.
-        Half-life: 2–3 hours in healthy adults.</dd>
+    <dd>Renal. Half-life: 2–3 hours in healthy adults.</dd>
 </dl>
 ```
 
 ---
-
 ---
 
-# SECTION 5 — Tables (Complete Coverage)
-## (1:05 – 1:25 | 20 minutes)
+# SECTION 6 — Tables
 
----
+## 6.1 Why Tables in Healthcare?
 
-## 5.1 Why Tables in Healthcare?
+In pharmacy practice, tables display: drug dose charts, patient lab results, drug interaction matrices, formulation comparisons, prescription records, and ADR reports.
 
-In pharmacy practice, tables are everywhere:
-- Drug dose charts (dose by age/weight)
-- Patient lab results over time
-- Drug interaction matrices
-- Comparison of drug formulations
-- Prescription records
-- Adverse drug reaction reports
-
-HTML tables display this data clearly and professionally on a web page.
-
----
-
-## 5.2 Basic Table Structure
+## 6.2 Basic Table Structure
 
 ```html
 <table>
     <tr>                        <!-- tr = Table Row -->
-        <th>Column 1</th>       <!-- th = Table Header (bold, centered) -->
+        <th>Column 1</th>       <!-- th = Table Header -->
         <th>Column 2</th>
     </tr>
     <tr>
@@ -595,281 +582,141 @@ HTML tables display this data clearly and professionally on a web page.
 </table>
 ```
 
-Think of it like building a spreadsheet row by row:
-- `<table>` = the entire spreadsheet
-- `<tr>` = one row
-- `<th>` = a header cell (column heading — like "Drug Name", "Dose")
-- `<td>` = a data cell (like "Paracetamol", "500 mg")
-
----
-
-## 5.3 Drug Dose Chart Table
+## 6.3 Semantic Table Sections
 
 ```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Paracetamol Dose Chart</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 80%;
-            margin: 20px auto;
-        }
-        th {
-            background-color: #003366;
-            color: white;
-            padding: 12px;
-            text-align: left;
-        }
-        td {
-            border: 1px solid #cccccc;
-            padding: 10px;
-        }
-        tr:nth-child(even) {
-            background-color: #f0f8ff;   /* Alternate row shading */
-        }
-        tr:hover {
-            background-color: #ffe0b2;   /* Highlight on hover */
-        }
-    </style>
-</head>
-<body>
-
-<h2>Paracetamol — Dosage by Age Group</h2>
-
-<table>
+<table border="1" cellpadding="10">
+    <caption>Paracetamol — Dosage by Age Group</caption>
     <thead>
         <tr>
             <th>Age Group</th>
-            <th>Weight Range (kg)</th>
             <th>Dose (mg)</th>
             <th>Frequency</th>
-            <th>Max Daily Dose</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>0–3 months</td>
-            <td>3–5 kg</td>
-            <td>40 mg</td>
-            <td>Every 8 hours</td>
-            <td>120 mg/day</td>
-        </tr>
-        <tr>
-            <td>3–12 months</td>
-            <td>5–10 kg</td>
-            <td>60–120 mg</td>
-            <td>Every 6 hours</td>
-            <td>480 mg/day</td>
-        </tr>
-        <tr>
             <td>1–5 years</td>
-            <td>10–18 kg</td>
             <td>120–250 mg</td>
             <td>Every 6 hours</td>
-            <td>1000 mg/day</td>
         </tr>
         <tr>
-            <td>6–12 years</td>
-            <td>18–40 kg</td>
-            <td>250–500 mg</td>
-            <td>Every 6–8 hours</td>
-            <td>2000 mg/day</td>
-        </tr>
-        <tr>
-            <td>Adults & >12 years</td>
-            <td>&gt;40 kg</td>
+            <td>Adults</td>
             <td>500–1000 mg</td>
             <td>Every 4–6 hours</td>
-            <td>4000 mg/day</td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5">
-                <small>⚠️ Reduce dose in hepatic impairment. 
-                Avoid in severe liver disease.</small>
-            </td>
+            <td colspan="3"><small>⚠️ Reduce dose in hepatic impairment.</small></td>
         </tr>
     </tfoot>
 </table>
-
-</body>
-</html>
 ```
-
-### Table Semantic Sections Explained
 
 | Tag | Meaning | Pharmacy Analogy |
 |-----|---------|-----------------|
-| `<thead>` | Table header section | Column headings row in a dose chart |
-| `<tbody>` | Table body — all data rows | The actual dose data |
-| `<tfoot>` | Table footer | Footnotes and disclaimers at bottom of chart |
+| `<caption>` | Table title, shown above the grid | The chart's heading, e.g., "Dose by Age" |
+| `<thead>` | Header section | Column headings row |
+| `<tbody>` | Body — all data rows | The actual dose data |
+| `<tfoot>` | Footer | Footnotes at the bottom |
 
----
-
-## 5.4 Spanning Cells — colspan and rowspan
-
-Sometimes a cell needs to stretch across multiple columns or rows.
+## 6.4 Spanning Cells — colspan and rowspan
 
 ```html
-<h3>Patient Lab Results — Morning & Evening Readings</h3>
-
 <table border="1" cellpadding="10">
-    <thead>
-        <tr>
-            <th rowspan="2">Date</th>        <!-- spans 2 rows down -->
-            <th rowspan="2">Patient</th>
-            <th colspan="2">Blood Glucose (mg/dL)</th>   <!-- spans 2 columns -->
-            <th colspan="2">Blood Pressure (mmHg)</th>
-        </tr>
-        <tr>
-            <!-- These headers sit under the colspan headings above -->
-            <th>Morning</th>
-            <th>Evening</th>
-            <th>Morning</th>
-            <th>Evening</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>15-Jun-2025</td>
-            <td>Rahul Sharma</td>
-            <td>118</td>
-            <td>142</td>
-            <td>128/82</td>
-            <td>135/88</td>
-        </tr>
-        <tr>
-            <td>16-Jun-2025</td>
-            <td>Rahul Sharma</td>
-            <td>112</td>
-            <td>138</td>
-            <td>125/80</td>
-            <td>130/85</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th rowspan="2">Date</th>
+        <th colspan="2">Blood Glucose (mg/dL)</th>
+    </tr>
+    <tr>
+        <th>Morning</th>
+        <th>Evening</th>
+    </tr>
+    <tr>
+        <td>15-Jun-2025</td>
+        <td>118</td>
+        <td>142</td>
+    </tr>
 </table>
 ```
 
 ---
+---
 
-## 5.5 Drug Interaction Table
+# SECTION 7 — Images and Media
+
+## 7.1 Images — `<img>`
 
 ```html
-<h3>Drug-Drug Interaction Matrix</h3>
-
-<table border="1" cellpadding="10" style="text-align:center;">
-    <thead>
-        <tr>
-            <th>Drug A \ Drug B</th>
-            <th>Aspirin</th>
-            <th>Warfarin</th>
-            <th>Metformin</th>
-            <th>Atorvastatin</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>Aspirin</th>
-            <td>—</td>
-            <td style="background:#ffcccc;">⚠️ Major</td>
-            <td style="background:#ffffcc;">Minor</td>
-            <td style="background:#ffffcc;">Minor</td>
-        </tr>
-        <tr>
-            <th>Warfarin</th>
-            <td style="background:#ffcccc;">⚠️ Major</td>
-            <td>—</td>
-            <td style="background:#ccffcc;">None</td>
-            <td style="background:#ffeecc;">Moderate</td>
-        </tr>
-        <tr>
-            <th>Metformin</th>
-            <td style="background:#ffffcc;">Minor</td>
-            <td style="background:#ccffcc;">None</td>
-            <td>—</td>
-            <td style="background:#ccffcc;">None</td>
-        </tr>
-        <tr>
-            <th>Atorvastatin</th>
-            <td style="background:#ffffcc;">Minor</td>
-            <td style="background:#ffeecc;">Moderate</td>
-            <td style="background:#ccffcc;">None</td>
-            <td>—</td>
-        </tr>
-    </tbody>
-</table>
+<img src="paracetamol_tablet.jpg" alt="Paracetamol 500mg tablet" width="300" height="200" title="Paracetamol 500mg">
 ```
 
-> 💬 "This is exactly how drug interaction databases display information. The colour coding — red for major, yellow for minor, green for none — is a visual safety cue. HTML tables with inline colours make this possible."
+| Attribute | Purpose |
+|-----------|---------|
+| `src` | Path to the image file (required) |
+| `alt` | Alternative text — read aloud by screen readers (required for accessibility) |
+| `width` / `height` | Size in pixels |
+| `title` | Tooltip text on hover |
 
----
+> 💬 "`alt` text is critically important. For visually impaired patients using screen readers, the `alt` text is read aloud instead of showing the image. On healthcare websites, accessibility is not optional."
 
----
+## 7.2 Figure and Caption — `<figure>`, `<figcaption>`
 
-# SECTION 6 — Images and Hyperlinks
-## (1:25 – 1:35 | 10 minutes)
-
----
-
-## 6.1 Images — `<img>`
-
-The `<img>` tag displays an image. It is a self-closing tag — no closing `</img>` needed.
+When an image needs a proper, semantically-linked caption (much better practice than a loose `<p>` under an image):
 
 ```html
-<!-- Basic image -->
-<img src="paracetamol_tablet.jpg" alt="Paracetamol 500mg tablet">
-
-<!-- Image with size specified -->
-<img src="prescription.jpg" alt="Sample prescription" width="400" height="300">
-
-<!-- Image from an internet URL -->
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Paracetamol-from-xtal-3D-bs-17.png/240px-Paracetamol-from-xtal-3D-bs-17.png" 
-     alt="Paracetamol molecular structure" 
-     width="200">
+<figure>
+    <img src="paracetamol_structure.png" alt="Chemical structure of Paracetamol" width="250">
+    <figcaption>Fig 1: Molecular structure of Paracetamol (C₈H₉NO₂)</figcaption>
+</figure>
 ```
 
-### Important Attributes
+## 7.3 Audio — `<audio>`
 
-| Attribute | Purpose | Example |
-|-----------|---------|---------|
-| `src` | Path to the image file (required) | `src="drug.jpg"` |
-| `alt` | Alternative text if image fails to load (required for accessibility) | `alt="Paracetamol tablet"` |
-| `width` | Width in pixels | `width="300"` |
-| `height` | Height in pixels | `height="200"` |
-| `title` | Tooltip text on hover | `title="Paracetamol 500mg"` |
-
-> 💬 "`alt` text is critically important. For visually impaired patients using screen readers, the `alt` text is read aloud instead of showing the image. In healthcare websites, accessibility is not optional — it is an ethical responsibility."
-
-### Image in a Healthcare Context
+Useful for accessibility — e.g., audio-recorded dosage instructions for low-literacy patients.
 
 ```html
-<h2>Drug Monograph — Paracetamol</h2>
+<audio controls>
+    <source src="dosage_instructions_telugu.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+```
 
-<img src="paracetamol_structure.png" 
-     alt="Chemical structure of Paracetamol (C8H9NO2)" 
-     width="250"
-     title="Paracetamol — Molecular Weight 151.16 g/mol">
+## 7.4 Video — `<video>`
 
-<p>
-    <b>Paracetamol</b> (Acetaminophen) — Molecular formula: 
-    C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>
-</p>
+Useful for injection technique demonstrations or patient education videos.
+
+```html
+<video width="400" controls>
+    <source src="inhaler_technique.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+```
+
+## 7.5 Embedding External Content — `<iframe>`
+
+Used to embed another webpage inside your page — for example, embedding a Google Map to a pharmacy's location, or a YouTube health-education video.
+
+```html
+<iframe 
+    width="400" height="250" 
+    src="https://www.youtube.com/embed/example" 
+    title="Correct inhaler usage demonstration"
+    allowfullscreen>
+</iframe>
 ```
 
 ---
+---
 
-## 6.2 Hyperlinks — `<a>`
-
-The `<a>` (anchor) tag creates clickable links.
+# SECTION 8 — Hyperlinks
 
 ```html
 <!-- Link to another webpage -->
 <a href="https://www.who.int">WHO — World Health Organisation</a>
 
-<!-- Link opens in a new tab (important for external sites) -->
+<!-- Link opens in a new tab -->
 <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">Search PubMed</a>
 
 <!-- Link to another page in the same website -->
@@ -887,41 +734,22 @@ The `<a>` (anchor) tag creates clickable links.
 <a href="tel:+914023456789">Call Hospital Pharmacy: 040-2345-6789</a>
 ```
 
-### Pharmacy-Relevant Links
-
-```html
-<h3>Drug Reference Resources</h3>
-<ul>
-    <li><a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed — Biomedical Research Database</a></li>
-    <li><a href="https://www.cdsco.gov.in" target="_blank">CDSCO — Central Drugs Standard Control Organisation</a></li>
-    <li><a href="https://www.who.int/medicines" target="_blank">WHO Essential Medicines</a></li>
-    <li><a href="https://www.mims.com" target="_blank">MIMS Drug Information</a></li>
-    <li><a href="https://abdm.gov.in" target="_blank">ABHA — Ayushman Bharat Health Account</a></li>
-</ul>
-```
+| Attribute | Purpose |
+|-----------|---------|
+| `href` | The destination URL (required) |
+| `target="_blank"` | Opens link in a new browser tab |
+| `download` | Forces the file to download rather than open in-browser |
 
 ---
-
 ---
 
-# SECTION 7 — Forms (All Input Types)
-## (1:35 – 1:50 | 15 minutes)
+# SECTION 9 — Forms
 
----
+## 9.1 Why Forms in Healthcare?
 
-## 7.1 Why Forms in Healthcare?
+Forms are how patients and pharmacists interact with web-based systems: registration, prescription submission, screening questionnaires, appointment booking, feedback.
 
-Forms are how patients and pharmacists interact with web-based systems:
-- Patient registration forms
-- Online prescription submissions
-- Symptom questionnaires and health screening
-- Appointment booking
-- Drug adverse reaction reporting
-- Feedback and rating systems
-
----
-
-## 7.2 Basic Form Structure
+## 9.2 Basic Form Structure
 
 ```html
 <form action="submit_prescription.php" method="POST">
@@ -932,348 +760,147 @@ Forms are how patients and pharmacists interact with web-based systems:
 
 | Attribute | Meaning |
 |-----------|---------|
-| `action` | Where the form data is sent when submitted (a server URL) |
-| `method="GET"` | Data sent in the URL (for searches) |
-| `method="POST"` | Data sent hidden in the request body (for sensitive data like patient info — always use POST for healthcare forms) |
+| `action` | Where the form data is sent when submitted |
+| `method="GET"` | Data sent in the URL (fine for non-sensitive searches) |
+| `method="POST"` | Data sent hidden in the request body — **always use for patient data** |
 
----
+## 9.3 All Input Types
 
-## 7.3 All Input Types — with Pharmacy Examples
+```html
+<!-- Text -->
+<input type="text" name="patient_name" placeholder="e.g. Rahul Sharma" maxlength="100" required>
 
-### Text Input
+<!-- Number -->
+<input type="number" name="age" min="0" max="120" required>
+<input type="number" name="weight" min="1" max="300" step="0.1">
+
+<!-- Email -->
+<input type="email" name="email" placeholder="patient@email.com">
+
+<!-- Telephone -->
+<input type="tel" name="phone" pattern="[0-9]{10}">
+
+<!-- Date -->
+<input type="date" name="dob">
+
+<!-- Password -->
+<input type="password" name="password" minlength="8">
+
+<!-- Radio (single choice) -->
+<input type="radio" name="gender" value="male"> Male
+<input type="radio" name="gender" value="female"> Female
+
+<!-- Checkbox (multiple choice) -->
+<input type="checkbox" name="allergy" value="penicillin"> Penicillin
+<input type="checkbox" name="allergy" value="sulfa"> Sulfa drugs
+
+<!-- Range slider -->
+<input type="range" name="pain" min="0" max="10" value="5">
+
+<!-- File upload -->
+<input type="file" name="prescription_img" accept=".jpg,.png,.pdf">
+
+<!-- Hidden field -->
+<input type="hidden" name="hospital_id" value="APL-HYD-001">
+
+<!-- Colour picker -->
+<input type="color" name="highlight_colour">
+
+<!-- Search box -->
+<input type="search" name="drug_search" placeholder="Search drugs...">
+
+<!-- Submit and Reset -->
+<input type="submit" value="Submit">
+<input type="reset" value="Clear">
+```
+
+## 9.4 Dropdown — `<select>`, `<option>`, and `<optgroup>`
+
+```html
+<select name="frequency">
+    <option value="">-- Select Frequency --</option>
+    <optgroup label="Standard Dosing">
+        <option value="od">Once Daily (OD)</option>
+        <option value="bd">Twice Daily (BD)</option>
+        <option value="tds">Three Times Daily (TDS)</option>
+    </optgroup>
+    <optgroup label="As-Needed Dosing">
+        <option value="sos">As Needed (SOS/PRN)</option>
+        <option value="stat">Immediately (STAT)</option>
+    </optgroup>
+</select>
+```
+
+`<optgroup>` visually groups related options under a bold label inside the dropdown — useful when a list is long, e.g., grouping drugs by category in a search dropdown.
+
+## 9.5 Suggestions While Typing — `<datalist>`
+
+Gives the user autocomplete-style suggestions while still allowing free text entry (unlike `<select>`, which locks them to only the listed options).
+
+```html
+<label for="drug_input">Drug Name:</label>
+<input type="text" id="drug_input" name="drug_input" list="drug_suggestions">
+
+<datalist id="drug_suggestions">
+    <option value="Paracetamol">
+    <option value="Amoxicillin">
+    <option value="Metformin">
+    <option value="Atorvastatin">
+</datalist>
+```
+
+## 9.6 Multi-line Text — `<textarea>`
+
+```html
+<textarea name="symptoms" rows="4" cols="50"
+    placeholder="Describe when symptoms started and their severity"></textarea>
+```
+
+## 9.7 Grouping Related Fields — `<fieldset>` and `<legend>`
+
+Visually and semantically groups related form fields inside a bordered box with a title — much cleaner than just using headings for sections of a long form.
+
+```html
+<fieldset>
+    <legend>Medical History</legend>
+
+    <input type="checkbox" name="condition" value="diabetes"> Diabetes<br>
+    <input type="checkbox" name="condition" value="hypertension"> Hypertension<br>
+    <input type="checkbox" name="condition" value="asthma"> Asthma
+</fieldset>
+```
+
+## 9.8 Calculated Display Field — `<output>`
+
+Displays the result of a calculation (typically driven by JavaScript) — for example, showing a live BMI result as the user types.
+
+```html
+<label for="weight">Weight (kg):</label>
+<input type="number" id="weight" name="weight">
+
+<label for="height">Height (m):</label>
+<input type="number" id="height" name="height" step="0.01">
+
+<p>Calculated BMI: <output id="bmi_result">--</output></p>
+```
+
+(The actual live calculation requires JavaScript, which is outside today's HTML-only scope — but knowing this tag exists matters, since you'll see it in real healthcare calculator widgets.)
+
+## 9.9 Connecting Labels Properly — `<label>`
+
 ```html
 <label for="patient_name">Patient Full Name:</label>
-<input type="text" 
-       id="patient_name" 
-       name="patient_name" 
-       placeholder="e.g. Rahul Sharma"
-       maxlength="100"
-       required>
+<input type="text" id="patient_name" name="patient_name">
 ```
 
-### Number Input
-```html
-<label for="age">Age:</label>
-<input type="number" id="age" name="age" min="0" max="120" required>
-
-<label for="weight">Weight (kg):</label>
-<input type="number" id="weight" name="weight" min="1" max="300" step="0.1">
-
-<label for="glucose">Fasting Glucose (mg/dL):</label>
-<input type="number" id="glucose" name="glucose" min="40" max="600">
-```
-
-### Email Input
-```html
-<label for="email">Email Address:</label>
-<input type="email" id="email" name="email" 
-       placeholder="patient@email.com">
-```
-
-### Phone Input
-```html
-<label for="phone">Mobile Number:</label>
-<input type="tel" id="phone" name="phone" 
-       placeholder="10-digit mobile number"
-       pattern="[0-9]{10}">
-```
-
-### Date Input
-```html
-<label for="dob">Date of Birth:</label>
-<input type="date" id="dob" name="dob">
-
-<label for="prescription_date">Prescription Date:</label>
-<input type="date" id="prescription_date" name="prescription_date">
-```
-
-### Password Input
-```html
-<label for="password">Create Password (for patient portal):</label>
-<input type="password" id="password" name="password" minlength="8">
-```
-
-### Radio Buttons — Single Choice
-```html
-<p><b>Gender:</b></p>
-<input type="radio" id="male" name="gender" value="male">
-<label for="male">Male</label>
-
-<input type="radio" id="female" name="gender" value="female">
-<label for="female">Female</label>
-
-<input type="radio" id="other" name="gender" value="other">
-<label for="other">Other / Prefer not to say</label>
-```
-
-```html
-<p><b>Blood Group:</b></p>
-<input type="radio" name="blood_group" value="A+"> <label>A+</label>
-<input type="radio" name="blood_group" value="A-"> <label>A−</label>
-<input type="radio" name="blood_group" value="B+"> <label>B+</label>
-<input type="radio" name="blood_group" value="B-"> <label>B−</label>
-<input type="radio" name="blood_group" value="O+"> <label>O+</label>
-<input type="radio" name="blood_group" value="O-"> <label>O−</label>
-<input type="radio" name="blood_group" value="AB+"> <label>AB+</label>
-<input type="radio" name="blood_group" value="AB-"> <label>AB−</label>
-```
-
-### Checkboxes — Multiple Choice
-```html
-<p><b>Known Allergies (check all that apply):</b></p>
-<input type="checkbox" name="allergy" value="penicillin">
-<label>Penicillin / Amoxicillin</label><br>
-
-<input type="checkbox" name="allergy" value="sulfa">
-<label>Sulfa drugs</label><br>
-
-<input type="checkbox" name="allergy" value="nsaid">
-<label>NSAIDs (Ibuprofen, Aspirin)</label><br>
-
-<input type="checkbox" name="allergy" value="latex">
-<label>Latex</label><br>
-
-<input type="checkbox" name="allergy" value="contrast">
-<label>Contrast dye</label><br>
-
-<input type="checkbox" name="allergy" value="none" checked>
-<label>No known allergies</label>
-```
-
-```html
-<p><b>Existing Medical Conditions:</b></p>
-<input type="checkbox" name="condition" value="diabetes"> <label>Diabetes</label><br>
-<input type="checkbox" name="condition" value="hypertension"> <label>Hypertension</label><br>
-<input type="checkbox" name="condition" value="cardiac"> <label>Cardiac Disease</label><br>
-<input type="checkbox" name="condition" value="renal"> <label>Kidney Disease</label><br>
-<input type="checkbox" name="condition" value="hepatic"> <label>Liver Disease</label><br>
-<input type="checkbox" name="condition" value="pregnancy"> <label>Pregnant / Planning pregnancy</label><br>
-<input type="checkbox" name="condition" value="asthma"> <label>Asthma / COPD</label>
-```
-
-### Dropdown — Select
-```html
-<label for="state">State:</label>
-<select id="state" name="state">
-    <option value="">-- Select State --</option>
-    <option value="AP">Andhra Pradesh</option>
-    <option value="TG">Telangana</option>
-    <option value="KA">Karnataka</option>
-    <option value="TN">Tamil Nadu</option>
-    <option value="MH">Maharashtra</option>
-</select>
-```
-
-```html
-<label for="frequency">Dosing Frequency:</label>
-<select id="frequency" name="frequency">
-    <option value="od">Once Daily (OD)</option>
-    <option value="bd">Twice Daily (BD)</option>
-    <option value="tds">Three Times Daily (TDS)</option>
-    <option value="qid">Four Times Daily (QID)</option>
-    <option value="sos">As Needed (SOS/PRN)</option>
-    <option value="stat">Immediately (STAT)</option>
-</select>
-```
-
-### Textarea — Multi-line Text
-```html
-<label for="current_meds">Current Medications (one per line):</label><br>
-<textarea id="current_meds" name="current_meds" 
-          rows="5" cols="50"
-          placeholder="Example:
-Metformin 500mg — Twice daily
-Amlodipine 5mg — Once daily
-Atorvastatin 10mg — At bedtime"></textarea>
-
-<label for="symptoms">Describe your symptoms:</label><br>
-<textarea id="symptoms" name="symptoms" rows="4" cols="50"
-          placeholder="Please describe when symptoms started, how severe they are, and anything that makes them better or worse.">
-</textarea>
-```
-
-### Range Slider — For Pain Scales
-```html
-<label for="pain">Pain Level (0 = No Pain, 10 = Worst Pain):</label>
-<input type="range" id="pain" name="pain" min="0" max="10" value="5">
-<span>Current: 5/10</span>
-```
-
-### File Upload
-```html
-<label for="prescription_img">Upload Prescription Image:</label>
-<input type="file" id="prescription_img" name="prescription_img"
-       accept=".jpg,.png,.pdf">
-```
-
-### Hidden Input
-```html
-<!-- Not visible to user — used to pass background data -->
-<input type="hidden" name="form_version" value="2.1">
-<input type="hidden" name="hospital_id" value="APL-HYD-001">
-```
-
-### Submit and Reset Buttons
-```html
-<input type="submit" value="Submit Patient Registration">
-<input type="reset" value="Clear All Fields">
-
-<!-- Or styled as buttons -->
-<button type="submit">Submit Registration</button>
-<button type="reset">Clear Form</button>
-```
+The `for` attribute on `<label>` must exactly match the `id` of its input. This isn't just cosmetic — clicking the label text will then also focus/activate the input, and screen readers will correctly announce the label when the field is focused. **Always pair label and input this way.**
 
 ---
-
-## 7.4 Complete Patient Registration Form
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Patient Registration — Hospital Pharmacy</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 30px; background: #f5f9ff; }
-        h1 { color: #003366; }
-        h3 { color: #005599; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-        label { display: block; margin-top: 12px; font-weight: bold; color: #333; }
-        input[type="text"], input[type="number"], input[type="email"],
-        input[type="tel"], input[type="date"], select, textarea {
-            width: 420px; padding: 8px; margin-top: 4px;
-            border: 1px solid #aaa; border-radius: 4px; font-size: 14px;
-        }
-        .checkbox-group label { font-weight: normal; display: inline; margin-left: 5px; }
-        .checkbox-group div { margin: 5px 0; }
-        button[type="submit"] {
-            margin-top: 20px; padding: 12px 40px;
-            background-color: #003366; color: white;
-            border: none; border-radius: 4px;
-            font-size: 16px; cursor: pointer;
-        }
-        button[type="reset"] {
-            margin-top: 20px; margin-left: 10px; padding: 12px 30px;
-            background-color: #888; color: white;
-            border: none; border-radius: 4px; cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-
-<h1>🏥 Hospital Pharmacy — Patient Registration</h1>
-<p>Please fill all fields accurately. This information helps us ensure safe medication dispensing.</p>
-
-<form action="#" method="POST">
-
-    <!-- Section 1: Personal Details -->
-    <h3>Section 1: Personal Details</h3>
-
-    <label for="full_name">Full Name: *</label>
-    <input type="text" id="full_name" name="full_name"
-           placeholder="As per government ID" required>
-
-    <label for="dob">Date of Birth: *</label>
-    <input type="date" id="dob" name="dob" required>
-
-    <label>Gender: *</label>
-    <input type="radio" name="gender" value="male" required>
-    <label style="display:inline; font-weight:normal;">Male</label> &nbsp;
-    <input type="radio" name="gender" value="female">
-    <label style="display:inline; font-weight:normal;">Female</label> &nbsp;
-    <input type="radio" name="gender" value="other">
-    <label style="display:inline; font-weight:normal;">Other</label>
-
-    <label for="blood_group">Blood Group:</label>
-    <select id="blood_group" name="blood_group">
-        <option value="">-- Select --</option>
-        <option>A+</option><option>A−</option>
-        <option>B+</option><option>B−</option>
-        <option>O+</option><option>O−</option>
-        <option>AB+</option><option>AB−</option>
-        <option>Unknown</option>
-    </select>
-
-    <label for="phone">Mobile Number: *</label>
-    <input type="tel" id="phone" name="phone"
-           placeholder="10-digit number" pattern="[0-9]{10}" required>
-
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email"
-           placeholder="For lab reports and prescriptions">
-
-    <!-- Section 2: Physical Parameters -->
-    <h3>Section 2: Physical Parameters</h3>
-
-    <label for="weight">Weight (kg):</label>
-    <input type="number" id="weight" name="weight" min="1" max="300" step="0.1">
-
-    <label for="height">Height (cm):</label>
-    <input type="number" id="height" name="height" min="30" max="250">
-
-    <!-- Section 3: Medical History -->
-    <h3>Section 3: Medical History</h3>
-
-    <label>Existing Medical Conditions:</label>
-    <div class="checkbox-group">
-        <div><input type="checkbox" name="condition" value="diabetes">
-             <label>Type 2 Diabetes Mellitus</label></div>
-        <div><input type="checkbox" name="condition" value="hypertension">
-             <label>Hypertension (High BP)</label></div>
-        <div><input type="checkbox" name="condition" value="cardiac">
-             <label>Cardiac Disease (IHD, Heart Failure)</label></div>
-        <div><input type="checkbox" name="condition" value="renal">
-             <label>Chronic Kidney Disease (CKD)</label></div>
-        <div><input type="checkbox" name="condition" value="hepatic">
-             <label>Liver Disease (Hepatitis, Cirrhosis)</label></div>
-        <div><input type="checkbox" name="condition" value="asthma">
-             <label>Asthma / COPD</label></div>
-        <div><input type="checkbox" name="condition" value="thyroid">
-             <label>Thyroid Disorder</label></div>
-    </div>
-
-    <label>Known Drug Allergies:</label>
-    <div class="checkbox-group">
-        <div><input type="checkbox" name="allergy" value="penicillin">
-             <label>Penicillin / Amoxicillin (Antibiotics)</label></div>
-        <div><input type="checkbox" name="allergy" value="sulfa">
-             <label>Sulfa Drugs (Cotrimoxazole)</label></div>
-        <div><input type="checkbox" name="allergy" value="nsaid">
-             <label>NSAIDs (Ibuprofen, Aspirin, Diclofenac)</label></div>
-        <div><input type="checkbox" name="allergy" value="none" checked>
-             <label>No Known Drug Allergies</label></div>
-    </div>
-
-    <label for="current_meds">Current Medications:</label>
-    <textarea id="current_meds" name="current_meds" rows="4"
-              placeholder="List all drugs you are currently taking, including OTC drugs and supplements"></textarea>
-
-    <!-- Section 4: Submission -->
-    <h3>Section 4: Declaration</h3>
-    <input type="checkbox" name="declaration" required>
-    <label style="display:inline; font-weight:normal;">
-        I confirm that the information provided is accurate and complete.
-    </label>
-
-    <br>
-    <button type="submit">✅ Register Patient</button>
-    <button type="reset">🔄 Clear All Fields</button>
-
-</form>
-
-</body>
-</html>
-```
-
 ---
 
----
+# SECTION 10 — Semantic HTML Tags
 
-# SECTION 8 — Semantic HTML Tags
-## (1:50 – 1:58 | 8 minutes)
-
----
-
-## 8.1 What is Semantic HTML?
+## 10.1 What is Semantic HTML?
 
 > **Semantic HTML** uses tags that describe the **meaning and purpose** of content — not just how it looks.
 
@@ -1289,112 +916,49 @@ Atorvastatin 10mg — At bedtime"></textarea>
 
 ### Why Semantic Tags Matter in Healthcare
 
-- **Accessibility** — Screen readers for visually impaired patients understand the page structure
-- **Search Engines** — Google ranks healthcare information pages higher when structure is clear
-- **Maintenance** — Developers reading the code know immediately what each section is
+- **Accessibility** — Screen readers understand the page structure
+- **Search Engines** — Google ranks healthcare pages higher when structure is clear
+- **Maintenance** — Developers immediately understand what each section is
 - **Regulations** — Healthcare websites increasingly must meet accessibility standards (WCAG)
 
----
+## 10.2 Key Semantic Tags — At a Glance
 
-## 8.2 Key Semantic Tags
+| Tag | Purpose |
+|-----|---------|
+| `<header>` | Top section — logo, site name, intro |
+| `<nav>` | Navigation links |
+| `<main>` | The primary content of the page (used once) |
+| `<section>` | A thematic group of content |
+| `<article>` | Self-contained content (could stand alone, e.g. one drug entry) |
+| `<aside>` | Supplementary/sidebar content |
+| `<footer>` | Bottom section — copyright, contact, disclaimers |
+| `<details>` / `<summary>` | A collapsible, expandable content block |
+
+## 10.3 Collapsible Content — `<details>` and `<summary>`
+
+A genuinely useful semantic pair that's often missed: creates a native, no-JavaScript-needed expand/collapse box — perfect for FAQs or "show more side effects" sections.
 
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>City Hospital — Drug Information Portal</title>
-</head>
-<body>
-
-    <!-- HEADER — site logo, hospital name, top navigation -->
-    <header>
-        <h1>🏥 City Hospital — Drug Information Portal</h1>
-        <p>Your trusted pharmaceutical reference</p>
-    </header>
-
-    <!-- NAV — main navigation links -->
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="drug_search.html">Drug Search</a> |
-        <a href="interactions.html">Interaction Checker</a> |
-        <a href="patient_register.html">Patient Registration</a> |
-        <a href="contact.html">Contact Pharmacy</a>
-    </nav>
-
-    <!-- MAIN — the primary content of the page -->
-    <main>
-
-        <!-- SECTION — a thematic group of content -->
-        <section>
-            <h2>Drug of the Week — Metformin</h2>
-
-            <!-- ARTICLE — self-contained content (could be shared independently) -->
-            <article>
-                <h3>Overview</h3>
-                <p>Metformin hydrochloride is the first-line pharmacological 
-                treatment for Type 2 Diabetes Mellitus. It belongs to the 
-                biguanide class of antidiabetics.</p>
-            </article>
-
-            <article>
-                <h3>Dosage and Administration</h3>
-                <p>Initial dose: 500mg twice daily with meals.
-                Titrate gradually. Maximum dose: 2000–2500mg/day.</p>
-            </article>
-        </section>
-
-        <section>
-            <h2>Drug Safety Alerts</h2>
-            <article>
-                <h3>⚠️ Metformin — Lactic Acidosis Risk</h3>
-                <p>Withhold Metformin in patients with eGFR &lt; 30 mL/min.
-                Risk of lactic acidosis in renal impairment.</p>
-            </article>
-        </section>
-
-    </main>
-
-    <!-- ASIDE — supplementary content, sidebar information -->
-    <aside>
-        <h3>Quick Reference</h3>
-        <ul>
-            <li>Normal Fasting Glucose: 70–100 mg/dL</li>
-            <li>Pre-diabetic: 100–125 mg/dL</li>
-            <li>Diabetic: ≥126 mg/dL</li>
-        </ul>
-
-        <h3>Emergency Contacts</h3>
-        <p>Pharmacy Helpline: <a href="tel:040-2345-6789">040-2345-6789</a></p>
-        <p>Poison Control: <a href="tel:1800-116-117">1800-116-117</a></p>
-    </aside>
-
-    <!-- FOOTER — bottom of page: copyright, links, contact -->
-    <footer>
-        <hr>
-        <p>© 2025 City Hospital, Hyderabad. All rights reserved.</p>
-        <p>
-            <a href="privacy.html">Privacy Policy</a> |
-            <a href="disclaimer.html">Medical Disclaimer</a> |
-            <a href="contact.html">Contact Us</a>
-        </p>
-        <p><small>Information on this portal is for reference only. 
-        Always consult a licensed pharmacist or physician.</small></p>
-    </footer>
-
-</body>
-</html>
+<details>
+    <summary>⚠️ Click to view full list of side effects</summary>
+    <ul>
+        <li>Nausea</li>
+        <li>Diarrhoea</li>
+        <li>Skin rash</li>
+        <li>Allergic reaction (rare)</li>
+    </ul>
+</details>
 ```
 
----
+By default, this displays only the `<summary>` line; clicking it reveals the hidden list — entirely built into the browser, no scripting required.
 
-## 8.3 `<div>` and `<span>` — Generic Containers
+## 10.4 `<div>` and `<span>` — Generic Containers
 
 When no semantic tag fits, use these:
 
 ```html
-<!-- div = block-level container (takes full width, starts new line) -->
-<div class="drug-card">
+<!-- div = block-level container (full width, starts new line) -->
+<div class="drug-card" data-drug-id="D004">
     <h3>Atorvastatin 10mg</h3>
     <p>Category: Statin | Requires Prescription: Yes</p>
 </div>
@@ -1408,42 +972,285 @@ When no semantic tag fits, use these:
 ```
 
 ---
+---
+---
+
+# 🅱️ PART B — PRACTICAL
+
+> 💬 Now that every tag has been explained, it's time to actually build. Open VS Code (or Notepad), create a new file, and save it with a `.html` extension **before** typing anything — that way your editor highlights the syntax correctly as you go.
+
+---
+
+## PRACTICAL 1 — Full Document Skeleton
+
+**Goal:** Type out a correct, complete HTML skeleton from memory, without copy-pasting.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Pharmacy Page</title>
+</head>
+<body>
+
+    <h1>Welcome to the Pharmacy Portal</h1>
+
+</body>
+</html>
+```
+
+Save as `practice1.html`, then double-click the file to open it in your browser. Confirm the heading and browser tab title both display correctly.
+
+---
+
+## PRACTICAL 2 — Student Profile Page
+
+**Goal:** Combine headings, paragraphs, a table, and a list.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Profile</title>
+</head>
+<body>
+
+    <h1>Student Profile</h1>
+
+    <p><b>Name:</b> Priya Sharma</p>
+    <p><b>Roll Number:</b> 2024PHARM042</p>
+    <p><b>Course:</b> B.Pharm — 2nd Year</p>
+
+    <h2>Academic Details</h2>
+    <table border="1" cellpadding="8">
+        <tr><th>Field</th><th>Details</th></tr>
+        <tr><td>Specialization</td><td>Pharmaceutical Sciences</td></tr>
+        <tr><td>CGPA</td><td>8.4 / 10</td></tr>
+    </table>
+
+    <h2>Subjects This Semester</h2>
+    <ul>
+        <li>Pharmacology II</li>
+        <li>Pharmaceutical Chemistry</li>
+        <li>AI & Computer Applications in Pharmacy</li>
+    </ul>
+
+</body>
+</html>
+```
+
+**Now extend it yourself:** Add a `<figure>` with a placeholder image and a `<figcaption>`, and one hyperlink to your college's website opening in a new tab.
+
+---
+
+## PRACTICAL 3 — Drug Monograph Page
+
+**Goal:** Use text formatting, description lists, abbreviations, and a `<details>` block together.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drug Monograph — Paracetamol</title>
+</head>
+<body>
+
+    <h1>Paracetamol <small>(Acetaminophen)</small></h1>
+    <p><i>INN:</i> Paracetamol | <abbr title="International Non-proprietary Name">INN</abbr> Class: Analgesic/Antipyretic</p>
+
+    <h2>Indications</h2>
+    <ul>
+        <li>Mild to moderate pain</li>
+        <li>Fever</li>
+    </ul>
+
+    <h2>Pharmacokinetics</h2>
+    <dl>
+        <dt>Absorption</dt>
+        <dd>Rapid, peak plasma concentration in 30–60 minutes.</dd>
+        <dt>Half-life</dt>
+        <dd>2–3 hours in healthy adults.</dd>
+    </dl>
+
+    <h2>Dosage Chart</h2>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr><th>Age Group</th><th>Dose</th><th>Frequency</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Adults</td><td>500–1000mg</td><td>Every 4–6 hrs</td></tr>
+        </tbody>
+    </table>
+
+    <details>
+        <summary>⚠️ Click to view full side-effect list</summary>
+        <ul>
+            <li>Nausea</li>
+            <li>Liver damage (in overdose)</li>
+            <li>Skin rash (rare)</li>
+        </ul>
+    </details>
+
+    <p><strong>Maximum Adult Dose: 4000mg/day.</strong></p>
+
+</body>
+</html>
+```
+
+**Now extend it yourself:** Add a `<blockquote>` citing a clinical guideline, and wrap the chemical formula using `<sub>`.
+
+---
+
+## PRACTICAL 4 — Diabetes Screening Form
+
+**Goal:** Build a complete form using `<fieldset>`, `<datalist>`, radio buttons, checkboxes, and a dropdown with `<optgroup>`.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Screening Form</title>
+</head>
+<body>
+
+<h1>Diabetes Risk Screening</h1>
+
+<form action="#" method="POST">
+
+    <fieldset>
+        <legend>Personal Details</legend>
+
+        <label for="name">Full Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" min="1" max="120" required>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend>Risk Factors</legend>
+
+        <p>Family history of diabetes?</p>
+        <input type="radio" name="family_history" value="yes"> Yes
+        <input type="radio" name="family_history" value="no"> No
+
+        <p>Symptoms (check all that apply):</p>
+        <input type="checkbox" name="symptom" value="thirst"> Excess thirst<br>
+        <input type="checkbox" name="symptom" value="urination"> Frequent urination<br>
+        <input type="checkbox" name="symptom" value="fatigue"> Fatigue<br>
+        <input type="checkbox" name="symptom" value="vision"> Blurred vision
+    </fieldset>
+
+    <br>
+
+    <label for="glucose">Fasting Glucose (mg/dL), if known:</label><br>
+    <input type="number" id="glucose" name="glucose" min="40" max="600"><br><br>
+
+    <label for="notes">Additional Notes:</label><br>
+    <textarea id="notes" name="notes" rows="4" cols="40"></textarea><br><br>
+
+    <button type="submit">Submit Screening</button>
+    <button type="reset">Clear Form</button>
+
+</form>
+
+</body>
+</html>
+```
+
+**Now extend it yourself:** Add a `<select>` with `<optgroup>` for "BMI Category" grouped under "Underweight/Normal" and "Overweight/Obese," and a `<datalist>` for a free-text "Current Medication" field with 4 common drug suggestions.
+
+---
+
+## PRACTICAL 5 — Full Semantic Hospital Pharmacy Page
+
+**Goal:** Combine everything — `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>` — into one complete, realistic page.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>City Hospital — Drug Information Portal</title>
+</head>
+<body>
+
+    <header>
+        <h1>🏥 City Hospital — Drug Information Portal</h1>
+        <p>Your trusted pharmaceutical reference</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a> |
+        <a href="#">Drug Search</a> |
+        <a href="#">Contact Pharmacy</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Drug of the Week — Metformin</h2>
+
+            <article data-drug-id="D003">
+                <h3>Overview</h3>
+                <p>Metformin hydrochloride is the first-line treatment for
+                Type 2 Diabetes Mellitus.</p>
+            </article>
+
+            <article data-drug-id="D003">
+                <h3>⚠️ Safety Alert</h3>
+                <p>Withhold in patients with eGFR &lt; 30 mL/min — risk of
+                lactic acidosis.</p>
+            </article>
+        </section>
+    </main>
+
+    <aside>
+        <h3>Quick Reference</h3>
+        <ul>
+            <li>Normal Fasting Glucose: 70–100 mg/dL</li>
+            <li>Diabetic: ≥126 mg/dL</li>
+        </ul>
+    </aside>
+
+    <footer>
+        <hr>
+        <p>© 2025 City Hospital, Hyderabad.</p>
+        <p><small>For reference only. Always consult a licensed pharmacist.</small></p>
+    </footer>
+
+</body>
+</html>
+```
+
+**Now extend it yourself:** Add a second `<section>` for "Patient Self-Help Resources" containing an embedded `<video>` or `<iframe>`, and give the `<aside>` a `data-section="quick-reference"` attribute.
 
 ---
 
 ## 🧠 Complete Session Key Takeaways
 
-1. **HTML = structure** of every web page — it labels and organises all content
+1. **HTML = structure** of every web page; it labels and organises content for the browser
 2. **Every HTML file** must have `<!DOCTYPE html>`, `<html>`, `<head>`, `<body>` — no exceptions
-3. **Headings `<h1>`–`<h6>`** create hierarchy — like a drug monograph structure; use `<h1>` only once
-4. **Text formatting** — `<b>`, `<strong>` for warnings; `<i>` for generic names; `<mark>` for high-alert drugs
-5. **Lists**: `<ul>` for drug side effects (order doesn't matter); `<ol>` for procedures (order matters); `<dl>` for pharmacokinetics definitions
-6. **Tables** — `<thead>`, `<tbody>`, `<tfoot>` for clean structure; `colspan` and `rowspan` for complex data like lab result charts
-7. **Images** — always include `alt` text; critical for patient accessibility on healthcare sites
-8. **Hyperlinks** — `target="_blank"` for external drug databases; `href="tel:"` for clickable phone numbers
-9. **Forms** — use `POST` method for all patient data; radio for single choice (blood group); checkboxes for multiple (allergies, conditions)
-10. **Semantic tags** — `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>` make healthcare portals accessible and professional
-
----
-
-## 💻 Practice Exercises
-
-**Exercise 1 — Student Profile Page:**
-Create a complete HTML page for yourself as a pharmacy student. Include: your name as `<h1>`, a profile summary paragraph, a table with your course details (name, year, college, roll number), an ordered list of your current subjects, and links to 3 pharmacy reference websites.
-
-**Exercise 2 — Drug Monograph Page:**
-Choose any one drug (Metformin, Amoxicillin, or Atorvastatin). Build an HTML page with: drug name as heading, sections using `<h2>` for Indications / Dosage / Side Effects / Contraindications / Storage. Use `<ul>` for side effects, `<ol>` for dosing steps, `<dl>` for pharmacokinetics, and a dose-by-age `<table>`. Add bold for warnings and italic for the generic name.
-
-**Exercise 3 — Diabetes Screening Form:**
-Create a patient screening form for Type 2 Diabetes risk assessment with: text fields (name, age), radio buttons (family history: Yes/No), checkboxes (symptoms: excess thirst, frequent urination, fatigue, blurred vision, slow wound healing), a dropdown for BMI category, a number input for fasting glucose, a textarea for additional notes, and submit/reset buttons.
-
-**Exercise 4 — Hospital Pharmacy Portal:**
-Build a complete page using semantic tags (`<header>`, `<nav>`, `<main>`, `<section>`, `<aside>`, `<footer>`) for a fictional hospital pharmacy. The `<aside>` should show normal lab value ranges. The `<main>` should show two drug articles. The `<footer>` should have a medical disclaimer and poison control number.
+3. **Global attributes** (`id`, `class`, `style`, `title`) work on virtually any tag; `id` is unique, `class` is reusable
+4. **`data-*` attributes** let you attach hidden custom data to elements — used heavily in real pharmacy/hospital dashboards
+5. **Headings, text formatting, lists, tables** structure and label content meaningfully
+6. **Media tags** (`<img>`, `<figure>`, `<audio>`, `<video>`, `<iframe>`) bring in visuals and external content
+7. **Forms** collect patient data — always `method="POST"`; `<fieldset>`/`<legend>` group related fields; `<datalist>` and `<optgroup>` improve usability
+8. **`<details>`/`<summary>`** gives you a no-JavaScript collapsible section — genuinely useful for FAQs and side-effect lists
+9. **Semantic tags** (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`) make pages accessible and professional
+10. Theory comes first because in HTML, a single missing closing tag or misunderstood attribute breaks the whole page — understanding before building avoids hours of frustrated debugging
 
 ---
 
 ## ❓ Q&A Discussion
 
 - "Why must we use `method="POST"` and not `method="GET"` for a patient registration form?"
-- "What is the difference between `<b>` and `<strong>` — they both make text bold, so why do two tags exist?"
-- "If a visually impaired patient is using a screen reader on a hospital website, which HTML feature helps them the most — and what happens if developers skip it?"
+- "What is the practical difference between using `id` and using `class` on an HTML element?"
+- "Give an example of when you'd use a `data-*` attribute on a drug card in a pharmacy web app."
+- "Why does `<details>`/`<summary>` not need any JavaScript to work, while `<output>` typically does?"
