@@ -1,4 +1,4 @@
-****# Unit IV – Day 1 (2 Hours)
+**  **# Unit IV – Day 1 (2 Hours)
 ## Web Technologies & HTML — Complete Guide for Pharmacy Students
 
 ---
@@ -405,25 +405,25 @@ Prescription issued on <time datetime="2025-06-15">15th June 2025</time>.
 
 ### Quick Reference Table
 
-| Tag | Renders As | Use in Pharmacy |
-|-----|-----------|----------------|
-| `<b>` | **Bold** | Drug warnings, important dose info |
-| `<strong>` | **Bold + semantic importance** | Critical contraindications |
-| `<i>` | *Italic* | Drug generic names (INN), Latin terms |
-| `<em>` | *Italic + emphasis* | Critical instructions |
-| `<u>` | Underlined | References (use sparingly) |
-| `<s>` / `<del>` | ~~Strikethrough~~ | Withdrawn drugs, outdated info |
-| `<ins>` | <u>Underlined (inserted)</u> | Updated dosage values |
-| `<mark>` | Highlighted | High-alert medications |
-| `<sup>` / `<sub>` | x² / H₂O | References, chemical notation |
-| `<small>` | Smaller text | Disclaimers, fine print |
-| `<abbr>` | Dotted underline + tooltip | Medical abbreviations (NBM, BD, STAT) |
-| `<cite>` | *Italic* | Naming a guideline, pharmacopoeia, journal |
-| `<code>` | Monospace font | Batch codes, drug IDs, system codes |
-| `<kbd>` | Boxed monospace | Keyboard shortcuts in a software guide |
-| `<blockquote>` | Indented block | Quoted clinical guidelines |
-| `<address>` | Italic block | Pharmacy/hospital contact details |
-| `<time>` | Normal text + hidden machine-readable date | Prescription dates, expiry dates |
+| Tag               | Renders As                                 | Use in Pharmacy                            |
+| ----------------- | ------------------------------------------ | ------------------------------------------ |
+| `<b>`             | **Bold**                                   | Drug warnings, important dose info         |
+| `<strong>`        | **Bold + semantic importance**             | Critical contraindications                 |
+| `<i>`             | *Italic*                                   | Drug generic names (INN), Latin terms      |
+| `<em>`            | *Italic + emphasis*                        | Critical instructions                      |
+| `<u>`             | Underlined                                 | References (use sparingly)                 |
+| `<s>` / `<del>`   | ~~Strikethrough~~                          | Withdrawn drugs, outdated info             |
+| `<ins>`           | <u>Underlined (inserted)</u>               | Updated dosage values                      |
+| `<mark>`          | Highlighted                                | High-alert medications                     |
+| `<sup>` / `<sub>` | x² / H₂O                                   | References, chemical notation              |
+| `<small>`         | Smaller text                               | Disclaimers, fine print                    |
+| `<abbr>`          | Dotted underline + tooltip                 | Medical abbreviations (NBM, BD, STAT)      |
+| `<cite>`          | *Italic*                                   | Naming a guideline, pharmacopoeia, journal |
+| `<code>`          | Monospace font                             | Batch codes, drug IDs, system codes        |
+| `<kbd>`           | Boxed monospace                            | Keyboard shortcuts in a software guide     |
+| `<blockquote>`    | Indented block                             | Quoted clinical guidelines                 |
+| `<address>`       | Italic block                               | Pharmacy/hospital contact details          |
+| `<time>`          | Normal text + hidden machine-readable date | Prescription dates, expiry dates           |
 
 ---
 
